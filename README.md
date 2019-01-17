@@ -19,15 +19,15 @@ A project to analyse a databank and extract some useful information
 
 3. Vagrant, https://www.vagrantup.com/downloads.html
 
-3.1 Once you download the vagrant you will need to configure a virtual machine, download the following link and extract into a file of    your computer: https://d17h27t6h515a5.cloudfront.net/topher/2017/June/5948287e_fsnd-virtual-machine/fsnd-virtual-machine.zip ,after extracting, put the **news.py** of this project in the same file as the others and download https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip and once again extract the **newsdata.sql** to the same file
-
-3.2 Use the comand prompt of your machine to navigate to the file and run the command : **Vagrant up** it will set up the virtual machine to the configuration of the file once its done run **Vagrant ssh** to connect to the virtual machine
-
-3.3 When you connect to the virtual machine, used **cd /vagrant** to acess the folders and then run **psql -d news -f newsdata.sql** to create the database nes in the virtual machine, after created it will automatically enter in database mode so type **\q to leave
-
-3.4 Run the code with **python news.py** it will print the answers both in the screen and in the log.txt
+3.1 
 
 
-# How to execute
+# How to set up Vagrant and run the code
 
-run python news.py when connected to vagrant, the output will be printed both in the comand screen and in a log.txt file that the program create
+1. Once you download the vagrant you will need to configure a virtual machine, download the following link and extract into a file of    your computer: https://d17h27t6h515a5.cloudfront.net/topher/2017/June/5948287e_fsnd-virtual-machine/fsnd-virtual-machine.zip ,after extracting, put the **news.py** of this project in the same file as the others and download https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip and once again extract the **newsdata.sql** to the same file
+
+2. Use the comand prompt of your machine to navigate to the file and run the command : **Vagrant up** it will set up the virtual machine to the configuration of the file once its done run **Vagrant ssh** to connect to the virtual machine
+
+3. When you connect to the virtual machine, used **cd /vagrant** to acess the folders and then run **psql -d news -f newsdata.sql** to create the database nes in the virtual machine, after created it will automatically enter in database mode so type **\q to leave
+
+4. Run the code with **python news.py** it will print the answers both in the screen and in the log.txtte
