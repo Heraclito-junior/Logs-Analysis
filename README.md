@@ -3,7 +3,6 @@ A small project for udacity web-developer course
 
 A project to analyse a databank and extract some useful information
 
-
 # Requisites of the code
 1. Find the 3 most popular article in the databank 
 
@@ -18,9 +17,6 @@ A project to analyse a databank and extract some useful information
 2. Virtual box, a tool that allows the creation and usage of virtual machines: https://www.virtualbox.org/wiki/Downloads
 
 3. Vagrant, https://www.vagrantup.com/downloads.html
-
-3.1 
-
 
 # How to set up Vagrant and run the code
 
