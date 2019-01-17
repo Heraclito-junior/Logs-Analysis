@@ -9,14 +9,18 @@ import psycopg2
 
 def top3():
 
-    db = psycopg2.connect("dbname=news")
+    try:
+        db = psycopg2.connect("dbname=news")
+    except psycopg2.Error as e:
+        print("Unable to connect to the database")
 
     c = db.cursor()
 
     c.execute(
       "select articles.title, COUNT(articles.id) as cont FROM " +
       "articles join log ON log.path like " +
-      "CONCAT('%',articles.slug,'%') GROUP BY" +
+      "CONCAT('%',articles.slug,'%') " +
+      "WHERE log.status like '%200 OK%' GROUP BY" +
       " articles.id order by cont desc Limit 3;"
     )
 
@@ -37,7 +41,10 @@ def top3():
 
 def authors():
 
-    db = psycopg2.connect("dbname=news")
+    try:
+        db = psycopg2.connect("dbname=news")
+    except psycopg2.Error as e:
+        print("Unable to connect to the database")
 
     c = db.cursor()
 
@@ -45,7 +52,8 @@ def authors():
       "select authors.name, SUM(pubs.cont) as maisFamoso from authors" +
       ",(select COUNT(articles.id) as cont, articles.title," +
       "articles.id, articles.author FROM articles " +
-      "join log ON log.path like CONCAT('%',articles.slug,'%') " +
+      "join log ON log.path like " +
+      "CONCAT('%',articles.slug,'%') and log.status like '%200 OK%' " +
       "GROUP BY articles.id) as pubs where authors.id=pubs.author GROUP BY " +
       "authors.name order by maisFamoso desc;")
 
@@ -71,8 +79,10 @@ def daysRequisitionReallyFailed():
 
     # i learned how to get day, month and year from the following site:
     # http://mascix.blogspot.com/2008/02/postgresql-group-by-day-week-and-month.html
-
-    db = psycopg2.connect("dbname=news")
+    try:
+        db = psycopg2.connect("dbname=news")
+    except psycopg2.Error as e:
+        print("Unable to connect to the database")
 
     c = db.cursor()
 
