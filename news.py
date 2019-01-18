@@ -88,8 +88,8 @@ def daysRequisitionReallyFailed():
 
     c.execute(
       "select * from ( select okay.Day, okay.HTTP_OKAY, notokay.HTTP_NOT, " +
-      "(100.0 *notokay.HTTP_NOT / okay.HTTP_OKAY) as percent" +
-      " from (SELECT " +
+      "(100.0 *notokay.HTTP_NOT / (okay.HTTP_OKAY+notokay.HTTP_NOT)) " +
+      "as percent from (SELECT " +
       "date_trunc('day', log.time) AS Day, " +
       "count(log.status) as HTTP_OKAY FROM " +
       "log WHERE status like '%200 OK%' GROUP BY Day ORDER BY Day) as okay " +
